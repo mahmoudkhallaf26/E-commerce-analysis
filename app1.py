@@ -67,15 +67,15 @@ def page2():
         st.markdown(f"""
         <div style='display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px;'>
         <span style="font-weight: bold; margin-right: 10px;">Most requested category:</span>
-        <div style='padding: 10px 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 5px; background-color: rgba(0, 0, 0, 0.05);'>
+        <div>
         {pd.pivot_table(data=df,index="Category",aggfunc="count",values="Customer ID").reset_index().sort_values(by="Customer ID",ascending=False)["Category"].iloc[0]}
         </div>
         </div>
         """, unsafe_allow_html=True)
         st.markdown(f"""
-        <div style='display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px;'>
+        <div style='display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px;margin-top: 20px;'>
         <span style="font-weight: bold; margin-right: 10px;">Most requested item:</span>
-        <div style='padding: 10px 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 5px; background-color: rgba(0, 0, 0, 0.05);'>
+        <div>
         {pd.pivot_table(data=df,index="Item Purchased",aggfunc="count",values="Customer ID").reset_index().sort_values(by="Customer ID",ascending=False)["Item Purchased"].iloc[0]}
         </div>
         </div>
@@ -95,15 +95,15 @@ def page2():
         st.markdown(f"""
         <div style='display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px;'>
         <span style="font-weight: bold; margin-right: 10px;">Total Profit:</span>
-        <div style='padding: 10px 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 5px; background-color: rgba(0, 0, 0, 0.05);'>
+        <div>
         {df["total_Profit"].sum()}
         </div>
         </div>
         """, unsafe_allow_html=True)
         st.markdown(f"""
-        <div style='display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px;'>
+        <div style='display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px;margin-top: 20px;'>
         <span style="font-weight: bold; margin-right: 10px;">Total Subscription:</span>
-        <div style='padding: 10px 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 5px; background-color: rgba(0, 0, 0, 0.05);'>
+        <div>
         {pd.pivot_table(data=df,index="Subscription Status",aggfunc="count",values="Customer ID").reset_index()["Customer ID"][1]}
         </div>
         </div>
@@ -113,15 +113,15 @@ def page2():
         st.markdown(f"""
         <div style='display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px;'>
         <span style="font-weight: bold; margin-right: 10px;">Highest Profit Category:</span>
-        <div style='padding: 10px 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 5px; background-color: rgba(0, 0, 0, 0.05);'>
+        <div>
         {pd.pivot_table(data=df,index="Category",values="total_Profit").sort_values(by="total_Profit", ascending=False).reset_index()["Category"][0]}
         </div>
         </div>
         """, unsafe_allow_html=True)
         st.markdown(f"""
-        <div style='display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px;'>
+        <div style='display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px;margin-top: 20px;'>
         <span style="font-weight: bold; margin-right: 10px;">Highest Profit item:</span>
-        <div style='padding: 10px 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 5px; background-color: rgba(0, 0, 0, 0.05);'>
+        <div>
         {pd.pivot_table(data=df,index="Item Purchased",values="total_Profit").sort_values(by="total_Profit", ascending=False).reset_index()["Item Purchased"][0]}
         </div>
         </div>
